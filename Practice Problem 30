@@ -1,0 +1,12 @@
+#This problem should be done in Eclipse. Copy the below code to Eclipse and get started.
+
+#PF-Tryout
+
+def number_lines( file_path ):
+    n = sum(1 for line in open(file_path))
+    f = open("newfile", "w+")
+    i = 0
+    for line in open(file_path):
+        f.write(i,line)
+file_path=""
+number_lines(file_path)
