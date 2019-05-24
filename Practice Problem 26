@@ -1,0 +1,11 @@
+#PF-Prac-26
+def check_occurence(string): 
+    string = string.lower()
+    count1 = string.count("mat")
+    count2 = string.count("jet")
+    if count1 == count2:
+        return True
+    return False
+        
+string="Jet on the Mat but mat is too long"
+print(check_occurence(string))
