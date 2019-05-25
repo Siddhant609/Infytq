@@ -1,0 +1,21 @@
+#PF-Tryout
+import pandas as pd
+def generate_schedule(module_list,duration_list,start_date):   
+    #start writing your code here
+    for duration in duration_list:
+        if duration >10:
+            return -1 
+        else:    
+            if "PF" in module_list:
+                end_date = pd.to_datetime(start_date) + pd.DateOffset(days=5)
+                start_date = end_date
+                print ('PF - Start Date:',start_date,'End Date:',end_date)
+            elif "OOP" in module_list:
+                end_date = pd.to_datetime(start_date) + pd.DateOffset(days=5)
+                print ('PF - Start Date:',start_date,'End Date:',end_date)
+
+    
+module_list=["PF","OOP"]
+duration_list=[7,8]
+start_date="01-03-2016"
+generate_schedule(module_list, duration_list, start_date)
