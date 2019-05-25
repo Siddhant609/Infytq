@@ -1,0 +1,27 @@
+
+def check_end(ducci):
+    return all(i == 0 for i in ducci)
+
+def compute(ducci):
+    copy = ducci[0]
+    new_seq = ducci
+    for i in range(0,len(ducci)-1):
+        new_seq[i] = abs(ducci[i] - ducci[i+1])
+    new_seq[len(ducci)-1] = abs(ducci[len(ducci)-1] - copy)
+    return tuple(new_seq)
+
+def ducci_sequence(ducci,n):
+    check_dupl = set()
+    steps = 0
+    while(check_end(ducci) != True):
+        ducci = compute(list(ducci))
+        if(tuple(ducci) in check_dupl):
+            break
+        else:
+            check_dupl.add(ducci)
+            steps += 1
+    final_list = list(check_dupl)
+    return final_list[n]
+
+ducci_element=ducci_sequence([0, 653, 1854, 4063] , 3)
+print(ducci_element)
