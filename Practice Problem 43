@@ -1,0 +1,48 @@
+#PF-Prac-43
+
+def find_promoted_vp(presidents_dict):
+    prezs = set()
+    for pres_rec in presidents_dict:
+        prezs.add(pres_rec['name'])
+    vps = set()
+    for pres_rec in presidents_dict:
+        vps.add(pres_rec['vp'])
+    promoted_vp_list = set()
+    for vp in vps:
+        if vp in prezs:
+            promoted_vp_list.add(vp)
+    return promoted_vp_list
+
+def find_presidents_vp(presidents_dict,duration):
+    overall_promoted = find_promoted_vp(presidents_dict)
+    result = []
+    duration = duration.split('-')
+    start = int(duration[0])
+    end = int(duration[1])
+    for items in presidents_dict:
+        if items['vp'] in overall_promoted:
+            start1 = items['period'].split('-')
+            end1  = int(start1[1])
+            start1 = int(start1[0])
+            if start1 >= start and end1 <= end:
+                result.append(items['vp'])
+    return result
+ 
+
+
+
+presidents_dict=[{'name':'George Washington', 'vp':'John Adams','period':'1990-1993'}, 
+                 {'name':'John Adams', 'vp':'Thomas Jefferson','period':'1994-1996'}, 
+                 {'name':'Zachary Taylor', 'vp':'Millard Fillmore','period':'1997-1999'}, 
+                 {'name':'Dwight D. Eisenhower', 'vp':'Richard Nixon','period':'1999-2001'}, 
+                 {'name':'Richard Nixon', 'vp':'Spiro Agnew','period':'2001-2002'}, 
+                 {'name':'Richard Nixon', 'vp':'Gerald Ford','period':'2002-2004'}] 
+
+print("The president and vice president details:",presidents_dict)
+output=find_promoted_vp(presidents_dict)
+print("The list of vice presidents who also got promoted as presidents:",output)
+duration='1999-2005'
+print("The president and vice president details:",presidents_dict)
+print("Given duration:",duration)
+output1=find_presidents_vp(presidents_dict, duration)
+print("The list of vice presidents who also got promoted as presidents in the given duration:",output1)
