@@ -1,0 +1,22 @@
+#PF-Prac-36
+def find_target_positions(input_string, target_word):
+    target_list=[]
+    input_string = input_string.split()
+    for i in range(0,len(input_string)):
+        if input_string[i] == target_word:
+            target_list.append(i)
+    return target_list
+
+def find_inverted_index(input_string):
+    target_dict={}
+    input_string = input_string.split()
+    for i in range(0,len(input_string)):
+        
+        target_dict.setdefault(input_string[i], []).append(i)
+    
+    return target_dict
+    
+    
+input_string="we dont need no education we dont need no thought control no we dont"
+result_dict=find_inverted_index(input_string)
+print(result_dict)
