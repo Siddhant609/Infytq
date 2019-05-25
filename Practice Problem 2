@@ -1,0 +1,13 @@
+#PF-Prac-2
+
+def bracket_pattern(input_str):
+    count1 = input_str.count("(")
+    count2 = input_str.count(")")
+    if input_str[0] != ')' and input_str[len(input_str)-1] != '(':
+        if count1 == count2 :
+            return True
+    return False
+
+    
+input_str="(())("
+print(bracket_pattern(input_str))
