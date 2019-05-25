@@ -1,0 +1,16 @@
+#PF-Prac-40
+def index_of_max_unique(num_list):
+    #start writing your code here
+    lenth = 0
+    for lists in num_list:
+        if len(set(lists)) == len(lists):
+            if lenth < len(lists):
+                lenth = len(lists)
+                index  = num_list.index(lists)
+    return index
+
+num_list=[[1, 3, 3], [12, 4, 12, 7, 4, 4], [41, 2, 4, 7, 1, 12], [1, 2, 3, 4, 5, 7, 6]]
+#num_list1=[[4, 5], [12], [3,8]] 
+print("Number list:",num_list)
+output=index_of_max_unique(num_list)
+print("The index of sub list containing maximum unique elements is:",output)
