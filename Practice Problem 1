@@ -1,0 +1,37 @@
+class Purchase:
+    list_of_items =["cake", "soap", "jam", "cereal", "hand sanitizer", "biscuits", "bread"]
+    list_of_count_of_each_item_sold = [0] * 7
+    
+    def __init__(self):
+        self.items_purchased = []
+        self.item_on_offer = None
+    
+    def get_items_purchased(self):
+        return self.items_purchased
+    def get_item_on_offer(self):
+        return self.item_on_offer
+        
+    def sell_items(self, list_of_items_to_be_purchased):
+        for items in list_of_items_to_be_purchased:
+            items = items.casefold()
+            if items in Purchase.list_of_items:
+                index1 = Purchase.list_of_items.index(items)
+                Purchase.list_of_count_of_each_item_sold[index1] += 1
+                self.items_purchased.append(items)
+                if items == 'Soap':
+                    self.provide_offer()
+    def provide_offer(self):
+        Purchase.list_of_count_of_each_item_sold[4] += 1
+        self.item_on_offer = "HAND SANITIZER"
+    
+    def find_total_items_sold(self):
+        count1 = 0
+        for i in Purchase.list_of_count_of_each_item_sold:
+            count1 += i
+        return count1
+
+p = Purchase()
+p.sell_items(['Soap', 'Bread'])
+print(p.get_items_purchased())
+print(p.get_item_on_offer())
+print(p.find_total_items_sold())
